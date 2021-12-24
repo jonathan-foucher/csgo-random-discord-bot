@@ -1,0 +1,142 @@
+{
+  "pistols": [
+    {
+      "group_id": 1,
+      "name": "USP-S"
+    },
+    {
+      "group_id": 1,
+      "name": "P2000"
+    },
+    {
+      "group_id": 1,
+      "name": "Glock-18"
+    },
+    {
+      "group_id": 2,
+      "name": "P250"
+    },
+    {
+      "group_id": 3,
+      "name": "Dual Berettas"
+    },
+    {
+      "group_id": 4,
+      "name": "CZ75-Auto"
+    },
+    {
+      "group_id": 4,
+      "name": "Five-Seven"
+    },
+    {
+      "group_id": 4,
+      "name": "Tec-9"
+    },
+    {
+      "group_id": 5,
+      "name": "Desert Eagle"
+    },
+    {
+      "group_id": 5,
+      "name": "R8 Revolver"
+    }
+  ],
+  "weapons": [
+    {
+      "group_id": 1,
+      "name": "Nova"
+    },
+    {
+      "group_id": 2,
+      "name": "MAG-7"
+    },
+    {
+      "group_id": 2,
+      "name": "Sawed-Off"
+    },
+    {
+      "group_id": 3,
+      "name": "XM1014"
+    },
+    {
+      "group_id": 4,
+      "name": "M249"
+    },
+    {
+      "group_id": 5,
+      "name": "Negev"
+    },
+    {
+      "group_id": 6,
+      "name": "MP9"
+    },
+    {
+      "group_id": 6,
+      "name": "MAC-10"
+    },
+    {
+      "group_id": 7,
+      "name": "PP-Bizon"
+    },
+    {
+      "group_id": 8,
+      "name": "UMP-45"
+    },
+    {
+      "group_id": 9,
+      "name": "MP7"
+    },
+    {
+      "group_id": 9,
+      "name": "MP5-SD"
+    },
+    {
+      "group_id": 10,
+      "name": "P90"
+    },
+    {
+      "group_id": 11,
+      "name": "FAMAS"
+    },
+    {
+      "group_id": 11,
+      "name": "Galil AR"
+    },
+    {
+      "group_id": 12,
+      "name": "M4A1-S"
+    },
+    {
+      "group_id": 12,
+      "name": "M4A4"
+    },
+    {
+      "group_id": 12,
+      "name": "AK-47"
+    },
+    {
+      "group_id": 13,
+      "name": "AUG"
+    },
+    {
+      "group_id": 13,
+      "name": "SG 553"
+    },
+    {
+      "group_id": 14,
+      "name": "SSG 08"
+    },
+    {
+      "group_id": 15,
+      "name": "AWP"
+    },
+    {
+      "group_id": 16,
+      "name": "G3SG1"
+    },
+    {
+      "group_id": 16,
+      "name": "SCAR-20"
+    }
+  ]
+}
