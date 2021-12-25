@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import os
 import json
 import discord
@@ -8,7 +9,9 @@ from dotenv import load_dotenv
 client = discord.Client()
 load_dotenv()
 
-weapons_file = open('../resources/json/csgo-weapons.json', 'r')
+script_dir = os.path.dirname(__file__)
+weapons_file_path = os.path.join(script_dir, '../resources/json/csgo-weapons.json')
+weapons_file = open(weapons_file_path, 'r')
 weapons = json.load(weapons_file)
 weapons_file.close()
 
