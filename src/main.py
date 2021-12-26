@@ -41,9 +41,8 @@ async def on_message(message):
         random_pistols = get_random_element(pistols)
         random_weapons = get_random_element(weapons)
 
-        response = format_response(random_pistols, random_weapons)
-
-        await message.channel.send(response)
+        response = format_response(message.author.nick, random_pistols, random_weapons)
+        await message.channel.send(response, files=files)
 
 
 def get_random_element(elements):
@@ -52,8 +51,8 @@ def get_random_element(elements):
     return random.choice(elements)
 
 
-def format_response(random_pistols, random_weapons):
-    return "Your weapons are : " + "/".join([p['name'] for p in random_pistols]) + " and " + "/".join(
+def format_response(name, random_pistols, random_weapons):
+    return name + " weapons are : " + "/".join([p['name'] for p in random_pistols]) + " and " + "/".join(
         [w['name'] for w in random_weapons])
 
 
