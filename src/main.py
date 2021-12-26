@@ -53,8 +53,8 @@ def get_random_element(elements):
 
 
 def format_response(name, random_pistols, random_weapons):
-    return name + " weapons are : " + "/".join([p['name'] for p in random_pistols]) + " and " + "/".join(
-        [w['name'] for w in random_weapons])
+    return "{} weapons are : {} and {}".format(name, "/".join([p['name'] for p in random_pistols]), "/".join(
+        [w['name'] for w in random_weapons]))
 
 
 def get_weapons_images(weapons_list):
