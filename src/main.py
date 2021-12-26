@@ -41,8 +41,9 @@ async def on_message(message):
         random_pistols = get_random_element(pistols)
         random_weapons = get_random_element(weapons)
 
+        images = get_weapons_images(random_pistols) + get_weapons_images(random_weapons)
         response = format_response(message.author.nick, random_pistols, random_weapons)
-        await message.channel.send(response, files=files)
+        await message.channel.send(response, files=images)
 
 
 def get_random_element(elements):
@@ -54,6 +55,16 @@ def get_random_element(elements):
 def format_response(name, random_pistols, random_weapons):
     return name + " weapons are : " + "/".join([p['name'] for p in random_pistols]) + " and " + "/".join(
         [w['name'] for w in random_weapons])
+
+
+def get_weapons_images(weapons_list):
+    images = []
+    for weapon in weapons_list:
+        weapon_img_path = os.path.join(script_dir, '../resources/img/{}.png'.format(weapon['name'].replace(' ', '_')))
+        with open(weapon_img_path, 'rb') as f:
+            picture = discord.File(f)
+            images.append(picture)
+    return images
 
 
 client.run(os.getenv('CRWD_BOT_TOKEN'))
