@@ -42,7 +42,8 @@ async def on_message(message):
         random_weapons = get_random_element(weapons)
 
         images = get_weapons_images(random_pistols) + get_weapons_images(random_weapons)
-        response = format_response(message.author.nick, random_pistols, random_weapons)
+        name = message.author.nick if message.author.nick else message.author.name
+        response = format_response(name, random_pistols, random_weapons)
         await message.channel.send(response, files=images)
 
 
