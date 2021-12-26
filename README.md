@@ -13,6 +13,9 @@ pip3 install discord
 ```
 pip3 install python-dotenv
 ```
+```
+pip3 install Pillow
+```
 
 Create .env file in the ./src directory with your Discord bot token:
 ```

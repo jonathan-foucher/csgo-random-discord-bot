@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
-import os
 import json
-import discord
+import os
 import random
 from collections import defaultdict
+from io import BytesIO
+
+import discord
+from PIL import Image
 from dotenv import load_dotenv
 
 client = discord.Client()
@@ -41,7 +44,7 @@ async def on_message(message):
         random_pistols = get_random_element(pistols)
         random_weapons = get_random_element(weapons)
 
-        images = get_weapons_images(random_pistols) + get_weapons_images(random_weapons)
+        images = [get_weapons_image(random_pistols), get_weapons_image(random_weapons)]
         name = message.author.nick if message.author.nick else message.author.name
         response = format_response(name, random_pistols, random_weapons)
         await message.channel.send(response, files=images)
@@ -58,14 +61,24 @@ def format_response(name, random_pistols, random_weapons):
         [w['name'] for w in random_weapons]))
 
 
-def get_weapons_images(weapons_list):
-    images = []
-    for weapon in weapons_list:
-        weapon_img_path = os.path.join(script_dir, '../resources/img/{}.png'.format(weapon['name'].replace(' ', '_')))
-        with open(weapon_img_path, 'rb') as f:
-            picture = discord.File(f)
-            images.append(picture)
-    return images
+def get_weapons_image(weapons_list):
+    images = [Image.open(os.path.join(script_dir, '../resources/img/{}.png'.format(weapon['name'].replace(' ', '_'))))
+              for weapon in weapons_list]
+    width, height = tuple(s//4 for s in images[0].size)
+    images = [i.resize((width, height), Image.ANTIALIAS) for i in images]
+
+    total_width = width * len(images)
+    combined_im = Image.new('RGBA', (total_width, height))
+
+    x_offset = 0
+    for im in images:
+        combined_im.paste(im, (x_offset, 0))
+        x_offset += width
+
+    with BytesIO() as image_binary:
+        combined_im.save(image_binary, 'PNG')
+        image_binary.seek(0)
+        return discord.File(fp=image_binary, filename='weapon.png')
 
 
 client.run(os.getenv('CRWD_BOT_TOKEN'))
