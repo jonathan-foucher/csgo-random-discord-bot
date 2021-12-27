@@ -58,7 +58,7 @@ def manage_crw_options(options_str):
     players = list()
 
     if options_str and not options_str.startswith('-'):
-        return None, 'Error: Unexpected argument {}'.format(options_str.rpartition('_')[0])
+        return None, 'Error: Unexpected argument {}'.format(options_str.split(' ')[0])
 
     options = list(filter(None, options_str.split('-')))
     while options:
