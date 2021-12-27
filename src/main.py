@@ -6,7 +6,7 @@ import random
 import discord
 from dotenv import load_dotenv
 
-from src.weapon import generate_weapons_list
+from weapon import generate_weapons_list
 
 client = discord.Client()
 load_dotenv()
