@@ -47,7 +47,7 @@ def generate_weapons_list(weapons_type):
 
     weapons_list = list()
     for wpn_group in groups.values():
-        wpn_name = "/".join([w['name'] for w in wpn_group])
+        wpn_name = '/'.join([w['name'] for w in wpn_group])
         wpn_image = get_weapons_image(wpn_group)
         weapons_list.append(Weapon(wpn_name, wpn_image))
     return weapons_list
