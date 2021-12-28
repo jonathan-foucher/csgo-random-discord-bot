@@ -26,16 +26,16 @@ async def on_message(message):
         return
 
     if message.content == '/crw' or message.content.startswith('/crw '):
-        players, message_to_send = manage_crw_options(message.content[5:])
+        players, is_unique_weapons, message_to_send = manage_crw_options(message.content[5:])
         if message_to_send:
             await message.channel.send(message_to_send)
         else:
             if not players:
                 players = [message.author.nick if message.author.nick else message.author.name]
-            await send_random_weapon(message.channel, players)
+            await send_random_weapon(message.channel, players, is_unique_weapons)
 
 
-async def send_random_weapon(channel, players):
+async def send_random_weapon(channel, players, is_unique_weapons):
     pistols_copy = copy.deepcopy(pistols)
     weapons_copy = copy.deepcopy(weapons)
 
@@ -46,6 +46,8 @@ async def send_random_weapon(channel, players):
         response = '{} weapons are : {} and {}'.format(player, random_pistol.name, random_weapon.name)
         images = [copy.deepcopy(random_pistol.image), copy.deepcopy(random_weapon.image)]
         await channel.send(response, files=images)
+        if is_unique_weapons:
+            weapons_copy.remove(random_weapon)
 
 
 def get_random_element(elements):
@@ -56,9 +58,10 @@ def get_random_element(elements):
 
 def manage_crw_options(options_str):
     players = list()
+    is_unique_weapons = False
 
     if options_str and not options_str.startswith('-'):
-        return None, 'Error: Unexpected argument {}'.format(options_str.split(' ')[0])
+        return None, None, 'Error: Unexpected argument {}'.format(options_str.split(' ')[0])
 
     options = list(filter(None, options_str.split('-')))
     while options:
@@ -69,13 +72,15 @@ def manage_crw_options(options_str):
             if args:
                 players = list(args)
             else:
-                return None, 'Error: -p option expects from 1 to 5 player names separated by a single space'
+                return None, None, 'Error: -p option expects from 1 to 5 player names separated by a single space'
+        elif option == 'u':
+            is_unique_weapons = True
         else:
-            return None, 'Error: Unknown option -{}'.format(option)
+            return None, None, 'Error: Unknown option -{}'.format(option)
         options.pop(0)
     if players and len(players) > 5:
-        return None, 'Error: You can\'t add more than 5 players with the -p option'
-    return players, None
+        return None, None, 'Error: You can\'t add more than 5 players with the -p option'
+    return players, is_unique_weapons, None
 
 
 client.run(os.getenv('CRWD_BOT_TOKEN'))
