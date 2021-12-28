@@ -74,12 +74,15 @@ def manage_crw_options(options_str):
             else:
                 return None, None, 'Error: -p option expects from 1 to 5 player names separated by a single space'
         elif option == 'u':
-            is_unique_weapons = True
+            if args:
+                return None, None, 'Error: -u option does not accept arguments'
+            else:
+                is_unique_weapons = True
         else:
-            return None, None, 'Error: Unknown option -{}'.format(option)
+            return None, None, 'Error: -{} option is unknown'.format(option)
         options.pop(0)
     if players and len(players) > 5:
-        return None, None, 'Error: You can\'t add more than 5 players with the -p option'
+        return None, None, 'Error: -p option accepts a maximum of 5 player names'
     return players, is_unique_weapons, None
 
 

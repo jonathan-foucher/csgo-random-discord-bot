@@ -35,4 +35,6 @@ The `-p` option allows you to specify from 1 to 5 players name.
 
 For each player of the command to get a unique primary weapon, you have to use the `-u` option.
 <br>By default, the players can get the same primary weapon. 
-<br>Exemple : `/crw -r -p Alex John`
+<br>Exemple : `/crw -u -p Alex John`
+
+<img src="resources/img/bot_answer_example.png" alt="Bot answer example"/>
