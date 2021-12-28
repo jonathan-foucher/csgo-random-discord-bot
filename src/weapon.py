@@ -21,7 +21,7 @@ class Weapon:
 
 
 def get_weapons_image(weapons_list):
-    images = [Image.open(os.path.join(script_dir, '../resources/img/{}.png'.format(weapon['name'].replace(' ', '_'))))
+    images = [Image.open(os.path.join(script_dir, '../resources/img/weapons/{}.png'.format(weapon['name'].replace(' ', '_'))))
               for weapon in weapons_list]
     width, height = tuple(s // 4 for s in images[0].size)
     images = [i.resize((width, height), Image.ANTIALIAS) for i in images]
