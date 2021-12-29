@@ -29,6 +29,8 @@ Then simply run the main.js file on your server.
 To get a random combination of weapon and pistol use the command `/crw`, the bot need to have the permissions to read and write on the channel.
 It also works on private message directly with the bot.
 
+The `-h` option displays the information and available options for the command.
+
 The `-p` option allows you to specify from 1 to 5 players name.
 <br>If not specified, the default will be the nickname or the name of the player using the command. 
 <br>Exemple : `/crw -p Alex John`
