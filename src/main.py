@@ -59,16 +59,25 @@ def get_random_element(elements):
 def manage_crw_options(options_str):
     players = list()
     is_unique_weapons = False
+    try_help_message = 'Try \'/crw -h\' for more information'
 
     if options_str and not options_str.startswith('-'):
-        return None, None, 'Error: Unexpected argument {}'.format(options_str.split(' ')[0])
+        return None, None, 'Error: Unexpected argument {}{}'.format(options_str.split(' ')[0], try_help_message)
 
     options = list(filter(None, options_str.split('-')))
     while options:
         args = list(filter(None, options[0].split(' ')))
         option = args[0]
         args.pop(0)
-        if option == 'p':
+        if option == 'h':
+            return None, None, \
+                   'Usage: /crw [-u] [-p] [PLAYER]' \
+                   '\nCSGO random weapons generator' \
+                   '\n\nOptions:' \
+                   '\n-u                 Generate a unique primary weapon for each player (default is not unique).' \
+                   '\n-p string     Generate with a player list, from 1 to 5 player names separated by a space.' \
+                   ' By default it will use the nickname or name of the user calling the command.'
+        elif option == 'p':
             if args:
                 players = list(args)
             else:
@@ -79,7 +88,7 @@ def manage_crw_options(options_str):
             else:
                 is_unique_weapons = True
         else:
-            return None, None, 'Error: -{} option is unknown'.format(option)
+            return None, None, 'Error: -{} option is unknown'.format(option, try_help_message)
         options.pop(0)
     if players and len(players) > 5:
         return None, None, 'Error: -p option accepts a maximum of 5 player names'
