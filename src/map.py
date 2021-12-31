@@ -10,7 +10,7 @@ from PIL import Image
 from utils import get_random_element
 
 script_dir = os.path.dirname(__file__)
-maps_folder = os.path.join(script_dir, '..\\resources\\img\\maps\\*.png')
+maps_folder = os.path.join(script_dir, '../resources/img/maps/*.png')
 maps_paths = glob.glob(maps_folder)
 
 
