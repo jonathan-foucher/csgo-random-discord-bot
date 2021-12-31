@@ -56,7 +56,7 @@ def manage_crm_options(options_str):
         if option == 'h':
             return None, None, \
                    'CSGO random map generator' \
-                   '\nUsage: `/crm [-b] [-n] [MAPS_NUMBER]`' \
+                   '\nUsage: `/crm [-b] [-n] [NUMBER]`' \
                    '\n\nOptions:' \
                    '\n-b                   Get only bomb site objective maps (default is not only bomb maps).' \
                    '\n-n integer     Define how many maps will be returned (default is 1 map).'
