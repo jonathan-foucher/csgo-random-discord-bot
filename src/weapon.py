@@ -81,6 +81,8 @@ def manage_crw_options(options_str):
                    ' By default it will use the nickname or name of the user calling the command.'
         elif option == 'p':
             if args:
+                if len(args) > 5:
+                    return None, None, 'Error: -p option accepts a maximum of 5 player names'
                 players = list(args)
             else:
                 return None, None, 'Error: -p option expects from 1 to 5 player names separated by a single space'
@@ -92,8 +94,6 @@ def manage_crw_options(options_str):
         else:
             return None, None, 'Error: -{} option is unknown'.format(option, try_help_message)
         options.pop(0)
-    if players and len(players) > 5:
-        return None, None, 'Error: -p option accepts a maximum of 5 player names'
     return players, is_unique_weapons, None
 
 
