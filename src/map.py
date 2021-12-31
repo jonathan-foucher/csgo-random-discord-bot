@@ -34,7 +34,7 @@ def get_maps_image(map_path):
 def generate_maps_list():
     maps_list = list()
     for map_path in maps_paths:
-        map_name = re.search('[^\\\\]*\\.(\\w+)$', map_path).group()[:-4]
+        map_name = re.search('[^\\\\\\/]*\\.(\\w+)$', map_path).group()[:-4]
         map_image = get_maps_image(map_path)
         maps_list.append(Map(map_name, map_image))
     return maps_list
