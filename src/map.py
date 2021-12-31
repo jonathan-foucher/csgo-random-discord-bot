@@ -81,7 +81,7 @@ def manage_crm_options(options_str):
             return None, None, 'Error: -{} option is unknown'.format(option, try_help_message)
         options.pop(0)
 
-        if number_of_maps > len(maps):
+        if not is_bomb_map_only and number_of_maps > len(maps):
             return None, None, 'Error: You are asking for {} maps but there is only {} available'.format(
                 number_of_maps, len(maps))
         if is_bomb_map_only and number_of_maps > len([m for m in maps if m.name.startswith('de_')]):
