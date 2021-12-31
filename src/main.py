@@ -4,6 +4,7 @@ import os
 import discord
 from dotenv import load_dotenv
 
+from map import send_random_map
 from weapon import manage_crw_options, send_random_weapon
 
 client = discord.Client()
@@ -28,6 +29,9 @@ async def on_message(message):
             if not players:
                 players = [message.author.nick if message.author.nick else message.author.name]
             await send_random_weapon(message.channel, players, is_unique_weapons)
+
+    if message.content == '/crm' or message.content.startswith('/crm '):
+        await send_random_map(message.channel)
 
     if message.content == '/help' or message.content.startswith('/help '):
         help_message = 'CSGO random bot' \
