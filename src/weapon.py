@@ -11,7 +11,7 @@ from utils import get_random_element
 
 script_dir = os.path.dirname(__file__)
 
-weapons_file_path = os.path.join(script_dir, '..\\resources\\json\\csgo-weapons.json')
+weapons_file_path = os.path.join(script_dir, '../resources/json/csgo-weapons.json')
 weapons_file = open(weapons_file_path, 'r')
 weapons_json = json.load(weapons_file)
 weapons_file.close()
@@ -26,7 +26,7 @@ class Weapon:
 def get_weapons_image(weapons_list):
     images = [
         Image.open(
-            os.path.join(script_dir, '..\\resources\\img\\weapons\\{}.png'.format(weapon['name'].replace(' ', '_'))))
+            os.path.join(script_dir, '../resources/img/weapons/{}.png'.format(weapon['name'].replace(' ', '_'))))
         for weapon in weapons_list]
     width, height = tuple(s // 4 for s in images[0].size)
     images = [i.resize((width, height), Image.ANTIALIAS) for i in images]
