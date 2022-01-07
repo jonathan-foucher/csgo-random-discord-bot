@@ -92,7 +92,7 @@ def manage_crw_options(options_str):
             else:
                 is_unique_weapons = True
         else:
-            return None, None, 'Error: -{} option is unknown'.format(option, try_help_message)
+            return None, None, 'Error: -{} option is unknown{}'.format(option, try_help_message)
         options.pop(0)
     return players, is_unique_weapons, None
 
