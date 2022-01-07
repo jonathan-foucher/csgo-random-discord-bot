@@ -78,7 +78,7 @@ def manage_crm_options(options_str):
             else:
                 is_bomb_map_only = True
         else:
-            return None, None, 'Error: -{} option is unknown'.format(option, try_help_message)
+            return None, None, 'Error: -{} option is unknown{}'.format(option, try_help_message)
         options.pop(0)
 
         if not is_bomb_map_only and number_of_maps > len(maps):
