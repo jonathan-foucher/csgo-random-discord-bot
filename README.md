@@ -11,10 +11,8 @@ Some weapons are only available on a side (ct or t) then we decided to regroup t
 Get a random CSGO map to know what map you will be playing for the next game.
 
 # Install the project 
-Install Python 3 and the next libraries :
-<br>`pip3 install discord`
-<br>`pip3 install python-dotenv`
-<br>`pip3 install Pillow`
+Install Python 3 and pip3. Then run the script to install the required libraries :
+<br>`sh install-libs.sh`
 
 Create .env file in the ./src directory with your Discord bot token:
 <br>`CRWD_BOT_TOKEN=XXXX`
