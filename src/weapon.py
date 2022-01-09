@@ -97,19 +97,25 @@ def manage_crw_options(options_str):
     return players, is_unique_weapons, None
 
 
-async def send_random_weapon(channel, players, is_unique_weapons):
-    pistols_copy = copy.deepcopy(pistols)
-    weapons_copy = copy.deepcopy(weapons)
+async def send_random_weapon(message):
+    players, is_unique_weapons, message_to_send = manage_crw_options(message.content[5:])
+    if message_to_send:
+        await message.channel.send(message_to_send)
+    else:
+        if not players:
+            players = [message.author.nick if message.author.nick else message.author.name]
+        pistols_copy = copy.deepcopy(pistols)
+        weapons_copy = copy.deepcopy(weapons)
 
-    for player in players:
-        random_pistol = get_random_element(pistols_copy)
-        random_weapon = get_random_element(weapons_copy)
+        for player in players:
+            random_pistol = get_random_element(pistols_copy)
+            random_weapon = get_random_element(weapons_copy)
 
-        response = '{} weapons are : {} and {}'.format(player, random_pistol.name, random_weapon.name)
-        images = [copy.deepcopy(random_pistol.image), copy.deepcopy(random_weapon.image)]
-        await channel.send(response, files=images)
-        if is_unique_weapons:
-            weapons_copy.remove(random_weapon)
+            response = '{} weapons are : {} and {}'.format(player, random_pistol.name, random_weapon.name)
+            images = [copy.deepcopy(random_pistol.image), copy.deepcopy(random_weapon.image)]
+            await message.channel.send(response, files=images)
+            if is_unique_weapons:
+                weapons_copy.remove(random_weapon)
 
 
 pistols = generate_weapons_list('pistols')

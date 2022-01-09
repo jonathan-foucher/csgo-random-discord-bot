@@ -91,16 +91,20 @@ def manage_crm_options(options_str):
     return number_of_maps, is_bomb_map_only, None
 
 
-async def send_random_map(channel, number_of_maps, is_bomb_map_only):
-    if is_bomb_map_only:
-        maps_copy = copy.deepcopy([m for m in maps if m.name.startswith('de_')])
+async def send_random_map(message):
+    number_of_maps, is_bomb_map_only, message_to_send = manage_crm_options(message.content[5:])
+    if message_to_send:
+        await message.channel.send(message_to_send)
     else:
-        maps_copy = copy.deepcopy(maps)
-    for i in range(number_of_maps):
-        random_map = get_random_element(maps_copy)
-        response = 'You will be playing on {}'.format(random_map.name)
-        await channel.send(response, file=copy.deepcopy(random_map.image))
-        maps_copy.remove(random_map)
+        if is_bomb_map_only:
+            maps_copy = copy.deepcopy([m for m in maps if m.name.startswith('de_')])
+        else:
+            maps_copy = copy.deepcopy(maps)
+        for i in range(number_of_maps):
+            random_map = get_random_element(maps_copy)
+            response = 'You will be playing on {}'.format(random_map.name)
+            await message.channel.send(response, file=copy.deepcopy(random_map.image))
+            maps_copy.remove(random_map)
 
 
 maps = generate_maps_list()
