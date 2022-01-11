@@ -103,7 +103,8 @@ async def send_random_weapon(message):
         await message.channel.send(message_to_send)
     else:
         if not players:
-            players = [message.author.nick if message.author.nick else message.author.name]
+            players = [message.author.nick if type(message.author) == discord.Member and message.author.nick
+                       else message.author.name]
         pistols_copy = copy.deepcopy(pistols)
         weapons_copy = copy.deepcopy(weapons)
 
