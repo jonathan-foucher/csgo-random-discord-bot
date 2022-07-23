@@ -22,7 +22,7 @@ Create a bot on Discord and invite it on your server with the appropriate permis
 The bot need to have the permissions to read and write on the channel.
 It also works on private message directly with the bot.
 
-Then simply run the main.js file on your server.
+Then simply run the main.py file on your server.
 
 # Bot usage
 
