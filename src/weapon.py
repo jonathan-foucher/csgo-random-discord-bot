@@ -113,8 +113,9 @@ async def send_random_weapon(message):
             random_weapon = get_random_element(weapons_copy)
 
             response = '{} weapons are : {} and {}'.format(player, random_pistol.name, random_weapon.name)
-            images = [copy.deepcopy(random_pistol.image), copy.deepcopy(random_weapon.image)]
-            await message.channel.send(response, files=images)
+            await message.channel.send(response)
+            await message.channel.send(file=copy.deepcopy(random_pistol.image))
+            await message.channel.send(file=copy.deepcopy(random_weapon.image))
             if is_unique_weapons:
                 weapons_copy.remove(random_weapon)
 
